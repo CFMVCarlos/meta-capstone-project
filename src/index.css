@@ -1,13 +1,372 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0; /* Remove default margin around the body */
+  -webkit-font-smoothing: antialiased; /* Smooth fonts on WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooth fonts in grayscale on macOS (Firefox) */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; /* Use a monospaced font stack for code elements */
+}
+
+
+
+/* ***************************************************************************************************** */
+
+*{
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  font-family: "Karla"; /* Use Karla font */
+}
+
+h1 {
+  margin-bottom: 10px; /* Add margin around the heading */
+}
+
+/* ***************************************************************************************************** */
+
+nav {
+  display: grid; /* Use grid layout to align items */
+  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-gap: 20px; /* Add 20px spacing between columns */
+  align-items: center; /* Vertically center all items within the grid */
+  color: #333333; /* Set dark gray text color */
+  font-weight: bold; /* Apply bold font weight */
+  font-family: "Markazi"; /* Use Markazi font for text */
+  margin: 20px 0; /* Add 20px vertical margin around the navigation */
+}
+
+nav img {
+  grid-column: 3 / span 2; /* Position the logo to span columns 3 and 4 */
+}
+
+nav .container {
+  grid-column: 5 / span 6; /* Menu items span columns 5 through 12 */
+  display: flex; /* Use flexbox for the menu items' layout */
+  justify-content: space-between; /* Distribute menu items evenly with space between them */
+  list-style: none; /* Remove default list bullets */
+}
+
+nav .item a {
+  text-decoration: none; /* Remove underline from the links */
+  color: inherit; /* Inherit color from the parent element (nav) */
+}
+
+nav .item {
+  margin: 0 10px; /* Add 10px horizontal margin between menu items */
+}
+
+/* ***************************************************************************************************** */
+
+footer {
+  background-color: #495E57; /* Dark green background color for the footer */
+  color: #EDEFEE; /* Light text color (near-white) for contrast */
+  display: grid; /* Use grid layout to align items */
+  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-gap: 30px; /* Add 30px spacing between columns */
+  align-items: start; /* Align items to the top of the grid */
+  padding: 30px; /* Add padding around the footer */
+}
+
+footer img {
+  grid-column: 3 / span 2; /* Logo spans columns 3 and 4 */
+  background-color: #EDEFEE; /* Set background color for the logo */
+  align-self: center; /* Vertically center the logo within its grid area */
+}
+
+footer .container {
+  display: flex; /* Use flexbox for horizontal alignment of items */
+  justify-content: space-between; /* Distribute space evenly between items */
+  list-style: none; /* Remove default bullet points from the list */
+}
+
+footer .menu {
+  grid-column: 5; /* Menu items span only column 5 */
+}
+
+footer .contact {
+  grid-column: 6 / span 3; /* Contact information spans columns 6 through 8 */
+}
+
+footer .socialmedia {
+  grid-column: 9 / span 2; /* Social media icons span columns 9 and 10 */
+}
+
+.flex-column {
+  flex-direction: column; /* Align items vertically within flex container */
+}
+
+footer .item a {
+  color: white; /* Set link text color to white */
+  text-decoration: underline; /* Add an underline to the links */
+  text-decoration-color: white; /* Set the underline color to white */
+}
+
+/* ***************************************************************************************************** */
+
+.hero {
+  background-color: #495E57; /* Set a dark green background color for the hero section */
+  display: grid; /* Use grid layout to align items */
+  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-gap: 20px; /* Add 20px spacing between columns */
+  align-items: center; /* Vertically center content within the grid */
+  font-family: "Markazi"; /* Use Markazi font for text */
+  color: white; /* Set the text color to white */
+  font-weight: bolder; /* Use a bold font weight for the text */
+  position: relative; /* Position the hero section relative to the parent element */
+  padding: 20px; /* Add padding inside the hero section */
+  margin-bottom: 200px; /* Add bottom margin to space out from elements below */
+}
+
+.hero section {
+  grid-column: 3 / span 4; /* The section spans columns 3 to 6 (4 columns in total) */
+}
+
+.hero section h1 {
+  color: #F4CE14; /* Set yellow color for the main heading */
+  font-size: 64px; /* Set a large font size for the main heading */
+}
+
+.hero section h2 {
+  font-size: 40px; /* Set a slightly smaller font size for the subheading */
+  margin-bottom: 40px; /* Add space below the subheading */
+}
+
+.hero section p {
+  width: 50%; /* Set paragraph width to 50% of the container */
+  font-weight: bold; /* Make text bold */
+  font-size: 18px; /* Set font size for the paragraph */
+}
+
+.hero section button {
+  background-color: #F4CE14; /* Set a yellow background color for the button */
+  color: #333333; /* Set dark gray text color for the button */
+  font-weight: bold; /* Make button text bold */
+  font-size: 18px; /* Set font size for the button */
+  padding: 10px 20px; /* Add padding around the button for better spacing */
+  border: none; /* Remove the default border around the button */
+  border-radius: 8px; /* Round the corners of the button */
+  margin-top: 20px; /* Add top margin to space out the button from other elements */
+  width: 200px; /* Set a fixed width for the button */
+}
+
+.hero .food {
+  position: absolute; /* Position the food element absolutely within the hero section */
+  grid-column: 6 / span 5; /* The food element spans columns 6 through 10 */
+  width: 100%; /* Set the width to 100% of the container */
+  height: 125%; /* Make the food element taller than its container */
+  border-radius: 16px; /* Apply rounded corners to the food element */
+  background-size: cover; /* Scale the background image to cover the entire element */
+  background-position: 50% 50%; /* Center the background image within the element */
+  margin-top: 180px; /* Add top margin to position the food element lower within the section */
+}
+
+/* *************************************************************************************************************** */
+
+.highlights {
+  display: grid; /* Use grid layout to align items horizontally */
+  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-gap: 20px; /* Add 20px spacing between columns */
+  align-items: center; /* Vertically center the content within the grid */
+  color: #333333; /* Set dark gray text color */
+  font-weight: bold; /* Apply bold font weight */
+  margin: 300px 0; /* Add top and bottom margin to space out the section */
+}
+
+.highlights h1 {
+  grid-column: 3 / span 4; /* The heading spans from columns 3 to 6 */
+  font-size: 40px; /* Set the font size for the heading */
+}
+
+.highlights button {
+  grid-column: 9 / span 2; /* The button spans columns 9 and 10 */
+  background-color: #F4CE14; /* Yellow background color for the button */
+  color: #333333; /* Dark gray text color for the button */
+  font-weight: inherit; /* Inherit the font weight from the parent */
+  font-size: 20px; /* Set a large font size for the button */
+  padding: 10px 20px; /* Add padding around the button */
+  border: none; /* Remove the button's default border */
+  border-radius: 16px; /* Apply rounded corners to the button */
+  width: 100%; /* Make the button take up the full width of its container */
+}
+
+.highlights .cards {
+  grid-column: 3 / span 8; /* The cards container spans from columns 3 to 10 */
+  display: grid; /* Use grid layout to align the cards */
+  grid-template-columns: repeat(3, 1fr); /* Create a 3-column grid for the cards */
+  grid-gap: 20px; /* Add consistent spacing between columns */
+  align-items: center; /* Vertically center the content within the grid */
+  font-weight: bold; /* Apply bold font weight to the card titles */
+}
+
+.highlights .card {
+  border-radius: 16px 16px 0 0; /* Apply rounded top corners to the card */
+  background-color: #495E57; /* Dark green background color for the card */
+}
+
+.highlights .card img {
+  border-radius: 16px 16px 0 0; /* Apply rounded top corners to the image */
+  height: 300px; /* Set a consistent height for all images */
+  object-fit: cover; /* Ensure the image fills the area without distortion */
+}
+
+.highlights .card .card-body {
+  padding: 20px; /* Add padding inside the card body */
+  color: #EDEFEE; /* Light text color for the card body */
+  height: 200px; /* Set a fixed height for the card body */
+  display: flex; /* Use flexbox for layout inside the card body */
+  flex-direction: column; /* Stack child elements vertically */
+}
+
+.highlights .card .card-header {
+  display: flex; /* Use flexbox for layout inside the card header */
+  justify-content: space-between; /* Space out the header content */
+  align-items: center; /* Vertically center the header content */
+  font-size: 20px; /* Set font size for the card header */
+}
+
+.highlights .card .card-price {
+  color: #F4CE14; /* Set yellow color for the price text */
+  font-size: 15px; /* Set font size for the price */
+}
+
+.highlights .card .card-body p {
+  font-size: 16px; /* Set font size for the paragraph text */
+  font-weight: normal; /* Set normal font weight for the paragraph */
+  margin: 10px 0; /* Add vertical margin to space out the paragraph */
+}
+
+.highlights .card .card-body h3 {
+  margin-top: auto; /* Push the heading to the bottom of the card body */
+}
+
+/* *************************************************************************************************************** */
+
+.testimonials {
+  background-color: #495E57; /* Dark green background color for the section */
+  padding: 50px 0 100px 0; /* Add padding to the top and bottom of the section */
+  text-align: center; /* Center align the text */
+  display: grid; /* Use grid layout for the section */
+  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-gap: 20px; /* Add 20px spacing between columns */
+  margin: 200px 0; /* Add top and bottom margin to space out the section */
+}
+
+.testimonials h2 {
+  grid-row: 1; /* Place the heading in the first grid row */
+  grid-column: 3 / span 8; /* The heading spans columns 3 to 10 */
+  font-size: 36px; /* Set the font size for the heading */
+  color: #F4CE14; /* Set yellow color for the heading */
+  margin-bottom: 20px; /* Add space below the heading */
+}
+
+.testimonials .cards {
+  grid-row: 2; /* Place the cards in the second grid row */
+  grid-column: 3 / span 8; /* The cards span columns 3 to 10 */
+  display: grid; /* Use grid layout for the cards */
+  grid-template-columns: repeat(4, 1fr); /* Create a 4-column grid for the cards */
+  gap: 20px; /* Add consistent spacing between cards */
+}
+
+.testimonials .card {
+  background-color: white; /* Set the background color to white for each card */
+  border-radius: 16px; /* Apply rounded corners to the card */
+  padding: 20px; /* Add padding inside the card */
+  text-align: left; /* Align text to the left inside the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow around the card */
+}
+
+.testimonials .card-header {
+  display: flex; /* Use flexbox layout for the card header */
+  align-items: center; /* Vertically center the items in the header */
+  margin-bottom: 10px; /* Add space below the header */
+  justify-content: flex-start; /* Align the items to the start (left) of the header */
+}
+
+.testimonials .card-header img {
+  width: 64px; /* Set the width of the image */
+  height: 64px; /* Set the height of the image */
+  margin-right: 20px; /* Add space to the right of the image */
+  border: 1px solid #333333; /* Add a dark border around the image */
+  object-fit: cover; /* Ensure the image fills the area without distortion */
+}
+
+.testimonials .card-header h3 {
+  font-size: 20px; /* Set the font size for the name in the header */
+  margin: 0; /* Remove default margin */
+  color: #333333; /* Set dark gray color for the name */
+}
+
+.testimonials .rating {
+  color: #F4CE14; /* Set yellow color for the rating */
+  font-size: 16px; /* Set font size for the rating */
+  margin-bottom: 10px; /* Add space below the rating */
+}
+
+.testimonials .card p {
+  font-size: 16px; /* Set font size for the testimonial text */
+  color: #333333; /* Set dark gray color for the text */
+  margin: 0; /* Remove default margin */
+}
+
+/* *************************************************************************************************************** */
+
+.about {
+  display: grid; /* Use grid layout for the section */
+  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-gap: 20px; /* Add 20px spacing between columns */
+  align-items: center; /* Vertically center the content */
+  margin: 300px 0; /* Add top and bottom margin to space out the section */
+}
+
+.about .about-text {
+  grid-column: 3 / span 4; /* Text section spans columns 3 to 7 */
+}
+
+.about .about-text h1 {
+  font-size: 64px; /* Set the font size for the main heading */
+  font-weight: bold; /* Make the heading bold */
+  color: #F4CE14; /* Set yellow color for the heading */
+}
+
+.about .about-text h2 {
+  font-size: 32px; /* Set the font size for the subheading */
+  font-weight: bold; /* Make the subheading bold */
+}
+
+.about .about-text ul {
+  margin-left: 20px; /* Add left margin for the list */
+  width: 50%; /* Set the width of the list */
+}
+
+.about .about-text li {
+  font-size: 16px; /* Set font size for the list items */
+  margin: 10px 0; /* Add spacing between list items */
+}
+
+.about .about-images {
+  grid-column: 7 / span 4; /* Image section spans columns 7 to 10 */
+  position: relative; /* Set the position to relative for absolute positioning of the images */
+  width: 100%; /* Set width to 100% */
+  height: 100%; /* Set height to 100% */
+}
+
+.about .about-images img {
+  width: 50%; /* Set width of images to 50% */
+  height: 80%; /* Set height of images to 80% */
+  position: absolute; /* Position images absolutely within the container */
+  border-radius: 16px; /* Apply rounded corners to the images */
+  border: 1px solid #333333; /* Add a dark border around the images */
+  object-fit: cover; /* Ensure the image fills the area without distortion */
+}
+
+.about .about-images .A {
+  right: 25px; /* Position image A from the right */
+  object-position: 75%; /* Adjust the position of the image inside the container */
+  z-index: 1; /* Set z-index to place this image above others */
+}
+
+.about .about-images .B {
+  left: 25px; /* Position image B from the left */
+  bottom: 0; /* Position image B at the bottom of the container */
+  object-position: 100%; /* Adjust the position of the image inside the container */
 }
