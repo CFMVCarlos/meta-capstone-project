@@ -4,7 +4,7 @@ import MarioAdrianB from "../assets/Mario and Adrian b.jpg";
 
 export default function About() {
   return (
-    <section className="about">
+    <section className="about" id="about">
       <section className="about-text">
         <h1>Little Lemon</h1>
         <h2>Chicago</h2>
