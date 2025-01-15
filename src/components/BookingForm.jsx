@@ -1,5 +1,5 @@
 /* global submitAPI */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function BookingForm({
@@ -7,11 +7,18 @@ export default function BookingForm({
   dispatchAvailableTimes,
 }) {
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState(availableTimes[0]);
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("");
+  const [formValid, setFormValid] = useState(false);
 
   const navigate = useNavigate(); // Initialize useNavigate hook
+
+  useEffect(() => {
+    const isValid =
+      date && time && guests >= 1 && guests <= 10 && occasion !== "";
+    setFormValid(isValid);
+  }, [date, time, guests, occasion]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +38,10 @@ export default function BookingForm({
     dispatchAvailableTimes({ type: "update", date: selectedDate });
   };
 
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
+  };
+
   return (
     <section className="booking-form">
       <form
@@ -46,6 +57,7 @@ export default function BookingForm({
           id="res-date"
           value={date}
           onChange={handleDateChange}
+          required
           aria-label="Choose a reservation date"
         />
 
@@ -53,7 +65,8 @@ export default function BookingForm({
         <select
           id="res-time"
           value={time}
-          onChange={(e) => setTime(e.target.value)}
+          onChange={handleInputChange(setTime)}
+          required
           aria-label="Choose a reservation time"
         >
           {availableTimes.map((timeOption) => (
@@ -71,7 +84,8 @@ export default function BookingForm({
           max="10"
           id="guests"
           value={guests}
-          onChange={(e) => setGuests(e.target.value)}
+          onChange={handleInputChange(setGuests)}
+          required
           aria-label="Enter the number of guests"
         />
 
@@ -79,9 +93,11 @@ export default function BookingForm({
         <select
           id="occasion"
           value={occasion}
-          onChange={(e) => setOccasion(e.target.value)}
+          onChange={handleInputChange(setOccasion)}
+          required
           aria-label="Select the occasion for the reservation"
         >
+          <option value="">Select an occasion</option>
           <option value="Birthday">Birthday</option>
           <option value="Anniversary">Anniversary</option>
         </select>
@@ -89,6 +105,7 @@ export default function BookingForm({
         <button
           type="submit"
           style={{ justifySelf: "center" }}
+          disabled={!formValid}
           aria-label="Submit the reservation"
         >
           Submit

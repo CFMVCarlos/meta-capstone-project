@@ -421,4 +421,8 @@ footer .item a {
     color: #EDEFEE;
     border: none;
   }
+
+  button:disabled{
+    background-color: #333333;
+  }
 }
