@@ -1,29 +1,79 @@
 /* global submitAPI */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function BookingForm({
   availableTimes,
   dispatchAvailableTimes,
 }) {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(() => {
+    const today = new Date();
+    return today.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+  });
   const [time, setTime] = useState(availableTimes[0]);
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("");
   const [formValid, setFormValid] = useState(false);
+  const [dateError, setDateError] = useState(""); // Error message for date
+  const [guestsError, setGuestsError] = useState(""); // Error message for guests
 
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
+
+  const handleDateChange = (e) => {
+    const selectedDate = e.target.value;
+    console.log(selectedDate);
+    setDate(selectedDate);
+    dispatchAvailableTimes({ type: "update", date: selectedDate });
+  };
+
+  // Memoize the validateFields function to avoid recreating it on each render
+  const validateFields = useCallback(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set time to start of the day
+    const selectedDate = new Date(date);
+    const oneYearFromNow = new Date();
+    oneYearFromNow.setFullYear(today.getFullYear() + 1);
+
+    console.log(today, selectedDate, oneYearFromNow);
+
+    let isValid = true;
+
+    // Validate date
+    if (!date || selectedDate < today || selectedDate > oneYearFromNow) {
+      console.log(selectedDate);
+      setDateError(
+        "Date must be today or a future date within one year from now."
+      );
+      isValid = false;
+    } else {
+      setDateError("");
+    }
+
+    // Validate guests
+    if (guests < 1 || guests > 10) {
+      setGuestsError("Number of guests must be between 1 and 10.");
+      isValid = false;
+    } else {
+      setGuestsError("");
+    }
+
+    return isValid;
+  }, [date, guests]); // Memoized to only change when `date` or `guests` change
 
   useEffect(() => {
-    const isValid =
-      date && time && guests >= 1 && guests <= 10 && occasion !== "";
+    const isValid = validateFields() && time && occasion !== "";
     setFormValid(isValid);
-  }, [date, time, guests, occasion]);
+  }, [date, time, guests, occasion, validateFields]); // Include validateFields as a dependency
+
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateFields()) return;
+
     const reservationDetails = { date, time, guests, occasion };
-    console.log("Reservation details:", reservationDetails);
     let response = await submitAPI(reservationDetails);
     if (response) {
       navigate("/booking/confirmed");
@@ -32,26 +82,28 @@ export default function BookingForm({
     }
   };
 
-  const handleDateChange = (e) => {
-    const selectedDate = e.target.value;
-    setDate(selectedDate);
-    dispatchAvailableTimes({ type: "update", date: selectedDate });
-  };
-
-  const handleInputChange = (setter) => (e) => {
-    setter(e.target.value);
-  };
-
   return (
     <section className="booking-form">
       <form
-        style={{ display: "grid", maxWidth: "300px", gap: "20px" }}
+        style={{ display: "grid", width: "200px", gap: "20px" }}
         onSubmit={handleSubmit}
         aria-labelledby="reservation-form-title"
       >
         <h2 id="reservation-form-title">Reservation Form</h2>
 
+        {/* Date Field */}
         <label htmlFor="res-date">Choose date</label>
+        {dateError && (
+          <span
+            style={{
+              color: "red",
+              fontSize: "0.9rem",
+            }}
+            aria-live="polite"
+          >
+            {dateError}
+          </span>
+        )}
         <input
           type="date"
           id="res-date"
@@ -61,6 +113,7 @@ export default function BookingForm({
           aria-label="Choose a reservation date"
         />
 
+        {/* Time Field */}
         <label htmlFor="res-time">Choose time</label>
         <select
           id="res-time"
@@ -76,7 +129,20 @@ export default function BookingForm({
           ))}
         </select>
 
+        {/* Guests Field */}
+
         <label htmlFor="guests">Number of guests</label>
+        {guestsError && (
+          <span
+            style={{
+              color: "red",
+              fontSize: "0.9rem",
+            }}
+            aria-live="polite"
+          >
+            {guestsError}
+          </span>
+        )}
         <input
           type="number"
           placeholder="1"
@@ -89,6 +155,7 @@ export default function BookingForm({
           aria-label="Enter the number of guests"
         />
 
+        {/* Occasion Field */}
         <label htmlFor="occasion">Occasion</label>
         <select
           id="occasion"
@@ -102,6 +169,7 @@ export default function BookingForm({
           <option value="Anniversary">Anniversary</option>
         </select>
 
+        {/* Submit Button */}
         <button
           type="submit"
           style={{ justifySelf: "center" }}
