@@ -460,3 +460,21 @@ footer .item a {
     background-color: #333333;
   }
 }
+
+/* *************************************************************************************************************** */
+
+.confirmation-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f9f9f9;
+  opacity: 1; /* Initial state */
+  transition: opacity 1s ease; /* Smooth fade-out */
+}
+
+.confirmation-page.fade-out {
+  opacity: 0; /* Faded-out state */
+}
