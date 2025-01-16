@@ -429,48 +429,48 @@ footer .item a {
   grid-gap: 20px; /* Add 20px spacing between columns */
   justify-items: center; /* Center the form horizontally */
   margin: 100px 0; /* Add top and bottom margin to space out the section */
-  color: #333333;
-  font-size: 24px;
+  color: #333333; /* Set dark gray text color */
+  font-size: 24px; /* Set font size for the form */
 }
 
 .booking-form form {
-  grid-column: 3 / span 8;
+  grid-column: 3 / span 8; /* Form spans columns 3 to 10 */
 
   label {
-    font-weight: lighter;
+    font-weight: lighter; /* Set font weight to lighter for labels */
   }
 
   input,
   select {
-    padding: 5px;
-    font-size: 18px;
+    padding: 5px; /* Add padding around the input/select */
+    font-size: 18px; /* Set font size for the input/select */
   }
 
   button {
-    width: 100%;
-    border-radius: 16px;
-    padding: 10px;
-    font-size: 18px;
-    background-color: #495e57;
-    color: #edefee;
-    border: none;
+    width: 100%; /* Make the button take up the full width */
+    border-radius: 16px; /* Apply rounded corners to the button */
+    padding: 10px; /* Add padding around the button */
+    font-size: 18px; /* Set font size for the button */
+    background-color: #495e57; /* Dark green background color for the button */
+    color: #edefee; /* Light text color for contrast */
+    border: none; /* Remove the default border */
   }
 
   button:disabled {
-    background-color: #333333;
+    background-color: #333333; /* Dark gray background color for disabled button */
   }
 }
 
 /* *************************************************************************************************************** */
 
 .confirmation-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  background-color: #f9f9f9;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  height: 100vh; /* Full viewport height */
+  text-align: center; /* Center text within the container */
+  background-color: #f9f9f9; /* Light gray background color */
   opacity: 1; /* Initial state */
   transition: opacity 1s ease; /* Smooth fade-out */
 }

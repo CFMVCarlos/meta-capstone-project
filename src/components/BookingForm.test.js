@@ -1,24 +1,30 @@
+import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
 import BookingForm from "./BookingForm";
 
 describe("BookingForm Component", () => {
+  // Mock function to simulate dispatch actions in tests
   const mockDispatch = jest.fn();
+  // Available times for the booking form
   const availableTimes = ["12:00 PM", "1:00 PM", "2:00 PM"];
 
+  // Before all tests, mock global alert function
   beforeAll(() => {
     global.alert = jest.fn(); // Mock the alert function
   });
 
+  // After all tests, restore the global alert to its original state
   afterAll(() => {
     jest.restoreAllMocks(); // Restore the original alert after tests
   });
 
+  // Before each test, clear previous mock calls and mock submitAPI function
   beforeEach(() => {
     mockDispatch.mockClear();
     global.submitAPI = jest.fn();
   });
 
+  // After each test, clear mocks to ensure clean slate for each test
   afterEach(() => {
     // Reset the mock after each test
     jest.clearAllMocks();
@@ -32,7 +38,7 @@ describe("BookingForm Component", () => {
       />
     );
 
-    // Check that all form elements are rendered
+    // Check that all form elements are rendered properly
     expect(screen.getByLabelText(/Choose date/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Choose time/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Number of guests/i)).toBeInTheDocument();
@@ -50,7 +56,7 @@ describe("BookingForm Component", () => {
       />
     );
 
-    // Simulate user input
+    // Simulate user filling in the form fields
     fireEvent.change(screen.getByLabelText(/Choose date/i), {
       target: { value: "2025-01-15" },
     });
@@ -64,16 +70,18 @@ describe("BookingForm Component", () => {
       target: { value: "Birthday" },
     });
 
-    // Submit the form
+    // Simulate form submission
     fireEvent.click(
       screen.getByRole("button", { value: /Make Your Reservation/i })
     );
 
-    // Validate form submission
+    // Verify if dispatch function was called with the correct argument
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "update",
       date: "2025-01-15",
     });
+
+    // Check if the form values are updated correctly
     expect(screen.getByLabelText(/Choose date/i)).toHaveValue("2025-01-15");
     expect(screen.getByLabelText(/Choose time/i)).toHaveValue("12:00 PM");
     expect(screen.getByLabelText(/Number of guests/i)).toHaveValue(5);
@@ -88,18 +96,21 @@ describe("BookingForm Component", () => {
       />
     );
 
+    // Simulate date change in the form
     fireEvent.change(screen.getByLabelText(/Choose date/i), {
       target: { value: "2025-01-15" },
     });
 
+    // Ensure dispatch is called with the correct date update
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "update",
       date: "2025-01-15",
     });
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
+    expect(mockDispatch).toHaveBeenCalledTimes(1); // Ensure it was called once
   });
 });
 
+// Test the form's HTML5 validation attributes
 test("BookingForm renders with correct HTML5 validation attributes", () => {
   render(
     <BookingForm
@@ -108,29 +119,30 @@ test("BookingForm renders with correct HTML5 validation attributes", () => {
     />
   );
 
-  // Check the date input
+  // Check the date input validation
   const dateInput = screen.getByLabelText(/choose a reservation date/i);
   expect(dateInput).toHaveAttribute("type", "date");
-  expect(dateInput).toBeRequired();
+  expect(dateInput).toBeRequired(); // Check if it is required
 
-  // Check the time select
+  // Check the time select validation
   const timeSelect = screen.getByLabelText(/choose a reservation time/i);
   expect(timeSelect).toHaveAttribute("required");
 
-  // Check the guests input
+  // Check the guests input validation
   const guestsInput = screen.getByLabelText(/enter the number of guests/i);
   expect(guestsInput).toHaveAttribute("type", "number");
   expect(guestsInput).toHaveAttribute("min", "1");
   expect(guestsInput).toHaveAttribute("max", "10");
   expect(guestsInput).toBeRequired();
 
-  // Check the occasion select
+  // Check the occasion select validation
   const occasionSelect = screen.getByLabelText(
     /select the occasion for the reservation/i
   );
   expect(occasionSelect).toBeRequired();
 });
 
+// Test if the submit button is enabled when inputs are valid
 test("BookingForm enables submit button for valid inputs", () => {
   render(
     <BookingForm
@@ -152,16 +164,20 @@ test("BookingForm enables submit button for valid inputs", () => {
   // Submit button is initially disabled
   expect(submitButton).toBeDisabled();
 
-  // Fill valid values
-  fireEvent.change(dateInput, { target: { value: "2024-12-25" } });
+  // Simulate user filling in valid values
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1); // Increment by 1 day
+  const formattedDate = tomorrow.toISOString().split("T")[0]; // Format to YYYY-MM-DD
+  fireEvent.change(dateInput, { target: { value: formattedDate } });
   fireEvent.change(timeSelect, { target: { value: "17:00" } });
   fireEvent.change(guestsInput, { target: { value: "4" } });
   fireEvent.change(occasionSelect, { target: { value: "Birthday" } });
 
-  // Submit button should now be enabled
+  // Check if the submit button is enabled now
   expect(submitButton).toBeEnabled();
 });
 
+// Test if the submit button remains disabled for invalid inputs
 test("BookingForm keeps submit button disabled for invalid inputs", () => {
   render(
     <BookingForm
@@ -175,9 +191,9 @@ test("BookingForm keeps submit button disabled for invalid inputs", () => {
   });
   const guestsInput = screen.getByLabelText(/enter the number of guests/i);
 
-  // Fill invalid number of guests
+  // Simulate user entering an invalid number of guests
   fireEvent.change(guestsInput, { target: { value: "0" } });
 
-  // Submit button should remain disabled
+  // Ensure the submit button remains disabled
   expect(submitButton).toBeDisabled();
 });

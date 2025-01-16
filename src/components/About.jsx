@@ -1,14 +1,18 @@
 import React from "react";
+// Importing images for the about section
 import MarioAdrianA from "../assets/Mario and Adrian A.jpg";
 import MarioAdrianB from "../assets/Mario and Adrian b.jpg";
 
 export default function About() {
   return (
+    // Main section for the About page, with an ID for navigation
     <section className="about" id="about">
+      {/* Section for the text content about the restaurant */}
       <section className="about-text">
-        <h1>Little Lemon</h1>
-        <h2>Chicago</h2>
+        <h1>Little Lemon</h1> {/* Restaurant name */}
+        <h2>Chicago</h2> {/* Location of the restaurant */}
         <ul>
+          {/* List of key information about the restaurant */}
           <li>
             Welcome to Little Lemon, a family-owned Mediterranean restaurant
             located in the heart of Chicago.
@@ -30,18 +34,21 @@ export default function About() {
           </li>
         </ul>
       </section>
+      {/* Section for the images showcasing the restaurant */}
       <section className="about-images">
+        {/* Image A showcasing the restaurant's atmosphere */}
         <img
           className="A"
           src={MarioAdrianA}
           width="100%"
-          alt="Mario and Adrian A"
+          alt="Mario and Adrian A" // Alt text for accessibility
         />
+        {/* Image B showcasing another view or aspect of the restaurant */}
         <img
           className="B"
           src={MarioAdrianB}
           width="100%"
-          alt="Mario and Adrian B"
+          alt="Mario and Adrian B" // Alt text for accessibility
         />
       </section>
     </section>
