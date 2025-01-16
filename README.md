@@ -2,6 +2,11 @@
 
 Meta Capstone Project is a React-based web application for **Little Lemon Restaurant**, which allows users to interact with various features such as making reservations, viewing weekly specials, and more. This project showcases a user-friendly interface and a seamless experience for restaurant visitors.
 
+![Navigation and Hero Section](WebAppImages/nav_hero.png)
+![Highlights Section](WebAppImages/highlights.png)
+![Testimonials Section](WebAppImages/testimonials.png)
+![About and Footer Section](WebAppImages/about_footer.png)
+
 ## Table of Contents
 
 - [Meta Capstone Project](#meta-capstone-project)
