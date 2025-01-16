@@ -1,5 +1,6 @@
 import React from "react";
 import Food from "../assets/restauranfood.jpg";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   return (
@@ -11,7 +12,10 @@ export default function HeroSection() {
           We are a family owned Mediterranean restaurant, focused on traditional
           recipes served with a modern twist.
         </p>
-        <button>Reserve a Table</button>
+
+        <Link to="/booking">
+          <button>Reserve a Table</button>
+        </Link>
       </section>
       <section
         className="food"

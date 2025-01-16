@@ -9,14 +9,13 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; /* Use a monospaced font stack for code elements */
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace; /* Use a monospaced font stack for code elements */
 }
-
-
 
 /* ***************************************************************************************************** */
 
-*{
+* {
   padding: 0; /* Remove default padding */
   margin: 0; /* Remove default margin */
   font-family: "Karla"; /* Use Karla font */
@@ -26,11 +25,18 @@ h1 {
   margin-bottom: 10px; /* Add margin around the heading */
 }
 
+button {
+  cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
 /* ***************************************************************************************************** */
 
 nav {
   display: grid; /* Use grid layout to align items */
-  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-template-columns: repeat(
+    12,
+    1fr
+  ); /* Create a 12-column grid with equal-width columns */
   grid-gap: 20px; /* Add 20px spacing between columns */
   align-items: center; /* Vertically center all items within the grid */
   color: #333333; /* Set dark gray text color */
@@ -45,7 +51,7 @@ nav {
   background-color: white; /* Optionally add a background color */
   margin: 0; /* Remove any margin */
   transition: top 0.3s; /* Smooth transition for showing and hiding */
-  border-bottom: 1px solid #495E57;
+  border-bottom: 1px solid #495e57;
 }
 
 nav.hidden {
@@ -75,10 +81,13 @@ nav .item {
 /* ***************************************************************************************************** */
 
 footer {
-  background-color: #495E57; /* Dark green background color for the footer */
-  color: #EDEFEE; /* Light text color (near-white) for contrast */
+  background-color: #495e57; /* Dark green background color for the footer */
+  color: #edefee; /* Light text color (near-white) for contrast */
   display: grid; /* Use grid layout to align items */
-  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-template-columns: repeat(
+    12,
+    1fr
+  ); /* Create a 12-column grid with equal-width columns */
   grid-gap: 30px; /* Add 30px spacing between columns */
   align-items: start; /* Align items to the top of the grid */
   padding: 30px; /* Add padding around the footer */
@@ -86,7 +95,7 @@ footer {
 
 footer img {
   grid-column: 3 / span 2; /* Logo spans columns 3 and 4 */
-  background-color: #EDEFEE; /* Set background color for the logo */
+  background-color: #edefee; /* Set background color for the logo */
   align-self: center; /* Vertically center the logo within its grid area */
 }
 
@@ -121,9 +130,12 @@ footer .item a {
 /* ***************************************************************************************************** */
 
 .hero {
-  background-color: #495E57; /* Set a dark green background color for the hero section */
+  background-color: #495e57; /* Set a dark green background color for the hero section */
   display: grid; /* Use grid layout to align items */
-  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-template-columns: repeat(
+    12,
+    1fr
+  ); /* Create a 12-column grid with equal-width columns */
   grid-gap: 20px; /* Add 20px spacing between columns */
   align-items: center; /* Vertically center content within the grid */
   font-family: "Markazi"; /* Use Markazi font for text */
@@ -139,7 +151,7 @@ footer .item a {
 }
 
 .hero section h1 {
-  color: #F4CE14; /* Set yellow color for the main heading */
+  color: #f4ce14; /* Set yellow color for the main heading */
   font-size: 64px; /* Set a large font size for the main heading */
 }
 
@@ -155,7 +167,7 @@ footer .item a {
 }
 
 .hero section button {
-  background-color: #F4CE14; /* Set a yellow background color for the button */
+  background-color: #f4ce14; /* Set a yellow background color for the button */
   color: #333333; /* Set dark gray text color for the button */
   font-weight: bold; /* Make button text bold */
   font-size: 18px; /* Set font size for the button */
@@ -181,7 +193,10 @@ footer .item a {
 
 .highlights {
   display: grid; /* Use grid layout to align items horizontally */
-  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-template-columns: repeat(
+    12,
+    1fr
+  ); /* Create a 12-column grid with equal-width columns */
   grid-gap: 20px; /* Add 20px spacing between columns */
   align-items: center; /* Vertically center the content within the grid */
   color: #333333; /* Set dark gray text color */
@@ -194,9 +209,12 @@ footer .item a {
   font-size: 40px; /* Set the font size for the heading */
 }
 
-.highlights button {
+.highlights a {
   grid-column: 9 / span 2; /* The button spans columns 9 and 10 */
-  background-color: #F4CE14; /* Yellow background color for the button */
+}
+
+.highlights a button {
+  background-color: #f4ce14; /* Yellow background color for the button */
   color: #333333; /* Dark gray text color for the button */
   font-weight: inherit; /* Inherit the font weight from the parent */
   font-size: 20px; /* Set a large font size for the button */
@@ -209,7 +227,10 @@ footer .item a {
 .highlights .cards {
   grid-column: 3 / span 8; /* The cards container spans from columns 3 to 10 */
   display: grid; /* Use grid layout to align the cards */
-  grid-template-columns: repeat(3, 1fr); /* Create a 3-column grid for the cards */
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Create a 3-column grid for the cards */
   grid-gap: 20px; /* Add consistent spacing between columns */
   align-items: center; /* Vertically center the content within the grid */
   font-weight: bold; /* Apply bold font weight to the card titles */
@@ -217,7 +238,7 @@ footer .item a {
 
 .highlights .card {
   border-radius: 16px 16px 0 0; /* Apply rounded top corners to the card */
-  background-color: #495E57; /* Dark green background color for the card */
+  background-color: #495e57; /* Dark green background color for the card */
 }
 
 .highlights .card img {
@@ -228,7 +249,7 @@ footer .item a {
 
 .highlights .card .card-body {
   padding: 20px; /* Add padding inside the card body */
-  color: #EDEFEE; /* Light text color for the card body */
+  color: #edefee; /* Light text color for the card body */
   height: 200px; /* Set a fixed height for the card body */
   display: flex; /* Use flexbox for layout inside the card body */
   flex-direction: column; /* Stack child elements vertically */
@@ -242,7 +263,7 @@ footer .item a {
 }
 
 .highlights .card .card-price {
-  color: #F4CE14; /* Set yellow color for the price text */
+  color: #f4ce14; /* Set yellow color for the price text */
   font-size: 15px; /* Set font size for the price */
 }
 
@@ -259,11 +280,14 @@ footer .item a {
 /* *************************************************************************************************************** */
 
 .testimonials {
-  background-color: #495E57; /* Dark green background color for the section */
+  background-color: #495e57; /* Dark green background color for the section */
   padding: 50px 0 100px 0; /* Add padding to the top and bottom of the section */
   text-align: center; /* Center align the text */
   display: grid; /* Use grid layout for the section */
-  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-template-columns: repeat(
+    12,
+    1fr
+  ); /* Create a 12-column grid with equal-width columns */
   grid-gap: 20px; /* Add 20px spacing between columns */
   margin: 200px 0; /* Add top and bottom margin to space out the section */
 }
@@ -272,7 +296,7 @@ footer .item a {
   grid-row: 1; /* Place the heading in the first grid row */
   grid-column: 3 / span 8; /* The heading spans columns 3 to 10 */
   font-size: 36px; /* Set the font size for the heading */
-  color: #F4CE14; /* Set yellow color for the heading */
+  color: #f4ce14; /* Set yellow color for the heading */
   margin-bottom: 20px; /* Add space below the heading */
 }
 
@@ -280,7 +304,10 @@ footer .item a {
   grid-row: 2; /* Place the cards in the second grid row */
   grid-column: 3 / span 8; /* The cards span columns 3 to 10 */
   display: grid; /* Use grid layout for the cards */
-  grid-template-columns: repeat(4, 1fr); /* Create a 4-column grid for the cards */
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* Create a 4-column grid for the cards */
   gap: 20px; /* Add consistent spacing between cards */
 }
 
@@ -314,7 +341,7 @@ footer .item a {
 }
 
 .testimonials .rating {
-  color: #F4CE14; /* Set yellow color for the rating */
+  color: #f4ce14; /* Set yellow color for the rating */
   font-size: 16px; /* Set font size for the rating */
   margin-bottom: 10px; /* Add space below the rating */
 }
@@ -329,7 +356,10 @@ footer .item a {
 
 .about {
   display: grid; /* Use grid layout for the section */
-  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-template-columns: repeat(
+    12,
+    1fr
+  ); /* Create a 12-column grid with equal-width columns */
   grid-gap: 20px; /* Add 20px spacing between columns */
   align-items: center; /* Vertically center the content */
   margin: 300px 0; /* Add top and bottom margin to space out the section */
@@ -342,7 +372,7 @@ footer .item a {
 .about .about-text h1 {
   font-size: 64px; /* Set the font size for the main heading */
   font-weight: bold; /* Make the heading bold */
-  color: #F4CE14; /* Set yellow color for the heading */
+  color: #f4ce14; /* Set yellow color for the heading */
 }
 
 .about .about-text h2 {
@@ -390,9 +420,12 @@ footer .item a {
 
 /* *************************************************************************************************************** */
 
-.booking-form{
+.booking-form {
   display: grid; /* Use grid layout for the form */
-  grid-template-columns: repeat(12, 1fr); /* Create a 12-column grid with equal-width columns */
+  grid-template-columns: repeat(
+    12,
+    1fr
+  ); /* Create a 12-column grid with equal-width columns */
   grid-gap: 20px; /* Add 20px spacing between columns */
   justify-items: center; /* Center the form horizontally */
   margin: 100px 0; /* Add top and bottom margin to space out the section */
@@ -403,26 +436,27 @@ footer .item a {
 .booking-form form {
   grid-column: 3 / span 8;
 
-  label{
+  label {
     font-weight: lighter;
   }
 
-  input, select{
+  input,
+  select {
     padding: 5px;
     font-size: 18px;
   }
 
-  button{
+  button {
     width: 100%;
     border-radius: 16px;
     padding: 10px;
     font-size: 18px;
-    background-color: #495E57;
-    color: #EDEFEE;
+    background-color: #495e57;
+    color: #edefee;
     border: none;
   }
 
-  button:disabled{
+  button:disabled {
     background-color: #333333;
   }
 }

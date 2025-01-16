@@ -1,28 +1,32 @@
 import React from "react";
 import Logo from "../assets/Logo.svg";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer>
       <img src={Logo} alt="Little Lemon Logo" />
-      <ul className="container menu flex-column" style={{ alignSelf: "center" }}>
+      <ul
+        className="container menu flex-column"
+        style={{ alignSelf: "center" }}
+      >
         <li className="item">
-          <a href="#">Home</a>
+          <Link to="/#">Home</Link>
         </li>
         <li className="item">
-          <a href="#">About</a>
+          <Link to="/#about">About</Link>
         </li>
         <li className="item">
-          <a href="#">Menu</a>
+          <Link to="/#">Menu</Link>
         </li>
         <li className="item">
-          <a href="#">Reservations</a>
+          <Link to="/booking">Reservations</Link>
         </li>
         <li className="item">
-          <a href="#">Order Online</a>
+          <Link to="/#">Order Online</Link>
         </li>
         <li className="item">
-          <a href="#">Login</a>
+          <Link to="/#">Login</Link>
         </li>
       </ul>
 
@@ -39,13 +43,13 @@ export default function Footer() {
         <h1>Social Media</h1>
         <ul style={{ listStyleType: "none", textDecoration: "none" }}>
           <li className="item">
-            <a href="#">Facebook</a>
+            <a href="https://www.facebook.com/">Facebook</a>
           </li>
           <li className="item">
-            <a href="#">Instagram</a>
+            <a href="https://www.instagram.com/">Instagram</a>
           </li>
           <li className="item">
-            <a href="#">X</a>
+            <a href="https://x.com/">X</a>
           </li>
         </ul>
       </section>

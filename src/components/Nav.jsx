@@ -31,29 +31,22 @@ export default function Nav() {
       <img src={Logo} alt="Little Lemon Logo" />
       <ul className="container">
         <li className="item">
-          <Link
-            to="/"
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
-            }}
-          >
-            Home
-          </Link>
+          <Link to="/#">Home</Link>
         </li>
         <li className="item">
           <Link to="/#about">About</Link>
         </li>
         <li className="item">
-          <Link to="#">Menu</Link>
+          <Link to="/#">Menu</Link>
         </li>
         <li className="item">
           <Link to="/booking">Reservations</Link>
         </li>
         <li className="item">
-          <Link to="#">Order Online</Link>
+          <Link to="/#">Order Online</Link>
         </li>
         <li className="item">
-          <Link to="#">Login</Link>
+          <Link to="/#">Login</Link>
         </li>
       </ul>
     </nav>

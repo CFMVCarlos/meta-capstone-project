@@ -16,6 +16,8 @@ function HomePage() {
         // Check if the element exists
         element.scrollIntoView({ behavior: "smooth", block: "center" });
       }
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [location]);
 

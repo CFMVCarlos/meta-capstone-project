@@ -3,12 +3,17 @@ import Card from "./Card";
 import GreekSalad from "../assets/greek salad.jpg";
 import Bruchetta from "../assets/bruchetta.svg";
 import LemonDessert from "../assets/lemon dessert.jpg";
+import { Link } from "react-router-dom";
 
 export default function Highlights() {
   return (
     <section className="highlights">
       <h1>This weeks specials!</h1>
-      <button>Online Menu</button>
+
+      <Link to="#">
+        <button>Online Menu</button>
+      </Link>
+
       <section className="cards">
         <Card name="Greek Salad" price="$12.99" image={GreekSalad}>
           <p>
