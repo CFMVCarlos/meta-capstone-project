@@ -10,6 +10,7 @@ export default function Card({ name, price, image, children }) {
         alt="A delicious meal" // Alt text for the image
         width="100%" // Ensures the image takes up full width of its container
         height="100%" // Ensures the image takes up full height of its container
+        loading="lazy" // Lazy load below-the-fold image
       />
       <section className="card-body">
         {/* Body section of the card */}

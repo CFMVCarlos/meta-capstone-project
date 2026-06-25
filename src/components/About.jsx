@@ -42,6 +42,7 @@ export default function About() {
           src={MarioAdrianA}
           width="100%"
           alt="Mario and Adrian A" // Alt text for accessibility
+          loading="lazy" // Lazy load below-the-fold image
         />
         {/* Image B showcasing another view or aspect of the restaurant */}
         <img
@@ -49,6 +50,7 @@ export default function About() {
           src={MarioAdrianB}
           width="100%"
           alt="Mario and Adrian B" // Alt text for accessibility
+          loading="lazy" // Lazy load below-the-fold image
         />
       </section>
     </section>
