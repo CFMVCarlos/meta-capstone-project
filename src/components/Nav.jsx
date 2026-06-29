@@ -1,25 +1,33 @@
-import React, { useCallback, useEffect, useState } from "react"; // Importing necessary hooks from React
+import React, { useCallback, useEffect, useState, useRef } from "react"; // Importing necessary hooks from React
 import { Link } from "react-router-dom"; // Importing Link to navigate between routes
 import Logo from "../assets/Logo.svg"; // Importing the logo image
 
 export default function Nav() {
   // State to control the visibility of the navigation bar
   const [showNav, setShowNav] = useState(true);
-  // State to track the last scroll position
-  const [lastScrollY, setLastScrollY] = useState(0);
+  // Ref to track the last scroll position without triggering re-renders
+  const lastScrollY = useRef(0);
 
   // Memoized handleScroll function to optimize performance
   const handleScroll = useCallback(() => {
-    if (window.scrollY > lastScrollY) {
+    if (window.scrollY > lastScrollY.current) {
       // If the user is scrolling down, hide the navigation
-      setShowNav(false);
+      // Only set state if it's currently showing to avoid unnecessary re-renders
+      setShowNav(prev => {
+        if (prev) return false;
+        return prev;
+      });
     } else {
       // If the user is scrolling up, show the navigation
-      setShowNav(true);
+      // Only set state if it's currently hidden to avoid unnecessary re-renders
+      setShowNav(prev => {
+        if (!prev) return true;
+        return prev;
+      });
     }
     // Update the last scroll position after each scroll event
-    setLastScrollY(window.scrollY);
-  }, [lastScrollY]); // Dependency array ensures handleScroll is recalculated when lastScrollY changes
+    lastScrollY.current = window.scrollY;
+  }, []); // Empty dependency array ensures handleScroll is never recreated, preventing event listener thrashing
 
   useEffect(() => {
     // Add a scroll event listener when the component is mounted
